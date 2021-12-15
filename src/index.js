@@ -3,20 +3,52 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+function SlideShow(props) {
+  return <div className='slideshowContainer'>
+    <div className='container'>
+      <img src="image2.png"></img>
+    </div>
+    <div className='container'>
+      <img src="image1.png"></img>
+    </div>
+  </div>
+}
+
 function Projects(props) {
-  return <h1>Project Name: {props.name}</h1>
+  return <div>
+    <h2>{props.name}</h2>
+    <p className='description'>{props.desc}</p>
+    <p>{props.linkLive} <a href={props.live}>{props.live}</a></p>
+    <p>{props.linkSource} <a href={props.source}>{props.source}</a></p>
+  </div>
+}
+function AboutMe(props) {
+  return <div className='bio'>
+    <h4 className='bio-title'>About Me:</h4>
+    <p>
+      Hi! My name is Luke Hanrahan and I've always had an interest in technology. I decided to turn that interest into a career through a combination of courses and self teaching.
+      The projects I've showcased here primarily deal with web development technologies such as HTML, CSS, and javascript for frontend work. With ExpressJS + MongoDB being used on the backend.
+      However I have a passion for learning and am always looking to pick up new skills.
+    </p>
+  </div>
 }
 
 function App() {
   return (
     <div className='main'>
-      <div className='bio'>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum tempus purus vel rhoncus. Vestibulum orci felis, tincidunt vel tempus non, malesuada id ante. Proin ligula lectus, congue a pellentesque sit amet, congue id quam. Pellentesque lorem nisi, dapibus vitae faucibus at, euismod quis massa. Curabitur fermentum magna non purus accumsan, non egestas est consectetur. Duis sit amet scelerisque urna. Duis ut pulvinar ante, at consectetur nunc. Vestibulum nibh odio, imperdiet ut erat a, dignissim sodales ante.
-        </p>
-      </div>
-      <div className='project'>
-        <Projects name="Yelpcamp" />
+      <SlideShow />
+      <div className='sub'>
+        <div className='sub-item'>
+          <AboutMe />
+        </div>
+        <div className='sub-item project'>
+          <Projects name="Yelpcamp" desc="This project was built as a full stack exercise. It uses ExpressJS, NodeJS, MongoDB and Bootstrap. 
+        Built using RESTful principals for the api and a basic user system is in place."
+            linkLive="Here is a link to a live version of the project: " live="https://damp-thicket-95453.herokuapp.com" linkSource="Here is a link to the source code: "
+            source="https://github.com/JohnnyJapes/YelpCamp-LH" />
+          <Projects name="Portfolio" desc="The page you're looking at right now! Built as an exercise to learn some of the basics of reactJS"
+            linkSource="Here is a link to the source code: " source="https://github.com/JohnnyJapes/JohnnyJapes.github.io" />
+        </div>
       </div>
     </div>
 

@@ -1,18 +1,62 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
+    color: azure;
     margin: 20px;
+    background-color: rgb(28, 28, 37);
+  }
+  a {
+    color:cadetblue
+  }
+  .slideshowContainer{
+    max-width : 100%;
+    position: relative;
+    margin: auto;
+  }
+    /* center image */
+    .container{
+      display: flex;
+      justify-content: center;
+    }
+  img{
+    width: 70%;
+    align-self: center;
   }
   .main {
     display: flex;
+    flex: 1;
+    width: 90%;
     flex-direction: column;
     margin: 4em;
-    align-items: flex-start;
+    align-items: center;
+  }
+  .sub {
+    display: flex;
+    flex: 1;
+    width: 90%;
+    justify-content: space-between;
+  }
+
+  .sub-item{
+    flex: 1;
+    margin-top: 10px;
+    
   }
   .bio{
     display: block;
+    margin: 20px;
+    flex: 1;
+    
+    
+  }
+  .bio-title{
+    text-align: center;
   }
   .project{
     display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    border-left: 2px solid rgb(62, 62, 66);
+    
   }
   
   ol, ul {
