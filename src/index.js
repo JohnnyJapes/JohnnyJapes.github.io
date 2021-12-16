@@ -1,26 +1,67 @@
 import { render } from '@testing-library/react';
+import react from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function SlideShow(props) {
-  return <div className='slideshowContainer'>
-    <div className='container'>
-      <img src="image2.png"></img>
-    </div>
-    <div className='container'>
-      <img src="image1.png"></img>
-    </div>
-  </div>
+class SlideShow extends react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: ["image1.png", "image2.png"],
+      current: 0
+    }
+
+  }
+  changeImage(i) {
+
+  }
+  clickBack(i, images) {
+    console.log("Back button ", i)
+    if (i == 0) {
+      i = images.length - 1;
+      this.setState({ current: 0 });
+    }
+    else {
+      i--;
+      this.setState({ current: i })
+    };
+  }
+  clickNext(i, images) {
+    console.log("Next button ", i)
+    if (i == images.length - 1) {
+      this.setState({ current: 0 });
+    }
+    else {
+      i++
+      this.setState({ current: i })
+    };
+  }
+
+
+  render() {
+    var current = 0;
+    return (
+      <div className='slideshowContainer'>
+        <div className='container'>
+          <button className='back-slide' onClick={() => this.clickNext(this.state.current, this.state.image)}>Back</button>
+          <img src={this.state.image[this.state.current]}></img>
+          <button className='next-slide' onClick={() => this.clickNext(this.state.current, this.state.image)}>Next</button>
+        </div>
+      </div>
+    )
+  }
+
 }
 
+
 function Projects(props) {
-  return <div>
+  return (<div>
     <h2>{props.name}</h2>
     <p className='description'>{props.desc}</p>
     <p>{props.linkLive} <a href={props.live}>{props.live}</a></p>
     <p>{props.linkSource} <a href={props.source}>{props.source}</a></p>
-  </div>
+  </div>)
 }
 function AboutMe(props) {
   return <div className='bio'>
@@ -33,26 +74,28 @@ function AboutMe(props) {
   </div>
 }
 
-function App() {
-  return (
-    <div className='main'>
-      <SlideShow />
-      <div className='sub'>
-        <div className='sub-item'>
-          <AboutMe />
-        </div>
-        <div className='sub-item project'>
-          <Projects name="Yelpcamp" desc="This project was built as a full stack exercise. It uses ExpressJS, NodeJS, MongoDB and Bootstrap. 
+class App extends React.Component {
+  render() {
+    return (
+      <div className='main'>
+        <SlideShow />
+        <div className='sub'>
+          <div className='sub-item'>
+            <AboutMe />
+          </div>
+          <div className='sub-item project'>
+            <Projects name="Yelpcamp" desc="This project was built as a full stack exercise. It uses ExpressJS, NodeJS, MongoDB and Bootstrap. 
         Built using RESTful principals for the api and a basic user system is in place."
-            linkLive="Here is a link to a live version of the project: " live="https://damp-thicket-95453.herokuapp.com" linkSource="Here is a link to the source code: "
-            source="https://github.com/JohnnyJapes/YelpCamp-LH" />
-          <Projects name="Portfolio" desc="The page you're looking at right now! Built as an exercise to learn some of the basics of reactJS"
-            linkSource="Here is a link to the source code: " source="https://github.com/JohnnyJapes/JohnnyJapes.github.io" />
+              linkLive="Live version: " live="https://damp-thicket-95453.herokuapp.com" linkSource="Source Code: "
+              source="https://github.com/JohnnyJapes/YelpCamp-LH" />
+            <Projects name="Portfolio" desc="The page you're looking at right now! Built as an exercise to learn some of the basics of reactJS"
+              linkSource="Source Code: " source="https://github.com/JohnnyJapes/JohnnyJapes.github.io" />
+          </div>
         </div>
       </div>
-    </div>
 
-  )
+    )
+  }
 }
 
 

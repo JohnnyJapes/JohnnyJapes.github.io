@@ -13,10 +13,21 @@ body {
     margin: auto;
   }
     /* center image */
-    .container{
-      display: flex;
-      justify-content: center;
-    }
+  .container{
+     display: flex;
+     justify-content: center;
+     margin: 5px
+  }
+  .back-slide{
+    position: absolute;
+    left: 15%;
+    top: 50%;
+  }
+  .next-slide{
+    position: absolute;
+    right: 15%;
+    top: 50%;
+  }
   img{
     width: 70%;
     align-self: center;
@@ -53,6 +64,7 @@ body {
   }
   .project{
     display: flex;
+    flex: 2;
     flex-direction: column;
     padding-left: 20px;
     border-left: 2px solid rgb(62, 62, 66);
